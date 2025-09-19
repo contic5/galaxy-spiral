@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Animation</title>
+        <link href="mystyle.css" type='text/css' rel='stylesheet'>
+    </head>
+    <body>
+    <h1>Animation</h1>
+    <canvas id="mycanvas" width="500" height="500">
+    
+    </canvas>
+    <script>
+    class Snowflake
+    {
+       
+    }
+    function clear()
+    {
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0,0,c.width,c.height); 
+    }
+    function draw()
+    {
+        clear();
+        //move objects
+        
+        //draw objects
+    }
+    let c=document.getElementById("mycanvas");
+    let ctx=c.getContext("2d");
+    
+  
+    setInterval(draw,33);
+    </script>
+    </body>
+</html>

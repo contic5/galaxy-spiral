@@ -60,11 +60,11 @@ function setup_celestial_bodies()
             //The first point in a spiral does not connect to a previous point. The rest do.
             if(distance==start_distance)
             {
-                celestial_bodies.push(new Point(x,y,10,primary_color,secondary_color,tertiary_color));
+                celestial_bodies.push(new Point(x,y,size/2,primary_color,secondary_color,tertiary_color));
             }
             else
             {
-                celestial_bodies.push(new Point(x,y,10,primary_color,secondary_color,tertiary_color,celestial_bodies[celestial_bodies.length-1]));
+                celestial_bodies.push(new Point(x,y,size/2,primary_color,secondary_color,tertiary_color,celestial_bodies[celestial_bodies.length-1]));
             }
         }
     }
@@ -103,6 +103,9 @@ export function update_values()
     distance_between=parseInt(document.getElementById("distance_between").value);
     document.getElementById("distance_between_value").innerHTML=distance_between;
 
+    size=parseInt(document.getElementById("size").value);
+    document.getElementById("size_value").innerHTML=size;
+
     angle_change=parseInt(document.getElementById("angle_change").value)*((2*Math.PI)/180);
     document.getElementById("angle_change_value").innerHTML=document.getElementById("angle_change").value;
 
@@ -138,10 +141,13 @@ let angle_change=0.3;
 const start_distance=50;
 
 //Where the last point is
-const end_distance=230;
+const end_distance=c.width/2;
 
 //Distance between each point in a spiral
 let distance_between=20;
+
+//Size of each point
+let size=20;
 
 let primary_color=document.getElementById("primary_color").value;
 let secondary_color=document.getElementById("secondary_color").value;

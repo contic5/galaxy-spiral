@@ -68,9 +68,11 @@ function setup_celestial_bodies()
             }
         }
     }
+    console.log(celestial_bodies.length);
 }
 function load_color_palettes()
 {
+    document.getElementById("color_palettes").innerHTML="";
     let index=0;
     for(const color_palette of color_palettes)
     {
@@ -110,6 +112,7 @@ export function update_values()
     document.getElementById("angle_change_value").innerHTML=document.getElementById("angle_change").value;
 
     console.log([[primary_color,secondary_color,tertiary_color],"WRITE_NAME_HERE"]);
+    console.log("Update values activated");
 
     setup_celestial_bodies();
 }
@@ -124,7 +127,10 @@ export function update_color_palette()
     document.getElementById("primary_color").value=primary_color;
     document.getElementById("secondary_color").value=secondary_color;
     document.getElementById("tertiary_color").value=tertiary_color;
-    update_values();
+
+    console.log("Update color palette activated");
+    setup_celestial_bodies();
+    //update_values();
 }
 export function reset_values()
 {

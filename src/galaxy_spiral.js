@@ -22,11 +22,27 @@ function draw()
         celestial_body.draw();
     }
 }
+
+//Draw more consistently with RequestAnimationFrame
+function step(timestamp)
+{
+    if(start_time==null)
+    {
+        start_time=timestamp;
+    }
+    const elapsed = timestamp - start_time;
+    if(elapsed>=1000/30)
+    {
+        start_time=timestamp;
+        draw();
+    }
+    requestAnimationFrame(step);
+}
 function setup_celestial_bodies()
 {
     celestial_bodies=[];
     //Star is at the center of the galaxy
-    celestial_bodies.push(new Star(c.width/2,c.height/2,35,primary_color,secondary_color,tertiary_color));
+    celestial_bodies.push(new Star(c.width/2,c.height/2,center_size,primary_color,secondary_color,tertiary_color));
 
     //Center cluster
     /*
@@ -45,11 +61,13 @@ function setup_celestial_bodies()
         }
     }*/
 
-    //Spirals
+    //Generate one spiral at a time. Generate all points for spiral 1, generate all points for spiral 2 and generate all points for the last spiral.
     for(let i=0;i<spirals;i++)
     {
         //Each spiral should be equidistant
         let angle=(i*2*Math.PI)/spirals;
+
+        //First point for the spirals should be at start distance
         for(let distance=start_distance;distance<end_distance;distance+=distance_between)
         {
             //Change the angle so that the spiral curves
@@ -108,6 +126,9 @@ export function update_values()
     size=parseInt(document.getElementById("size").value);
     document.getElementById("size_value").innerHTML=size;
 
+    center_size=parseInt(document.getElementById("center_size").value);
+    document.getElementById("center_size_value").innerHTML=center_size;
+
     angle_change=parseInt(document.getElementById("angle_change").value)*((2*Math.PI)/180);
     document.getElementById("angle_change_value").innerHTML=document.getElementById("angle_change").value;
 
@@ -155,11 +176,15 @@ let distance_between=20;
 //Size of each point
 let size=20;
 
+let center_size=100;
+
 let primary_color=document.getElementById("primary_color").value;
 let secondary_color=document.getElementById("secondary_color").value;
 let tertiary_color=document.getElementById("tertiary_color").value;
 
 console.log([primary_color,secondary_color,tertiary_color]);
 
+let start_time=0;
+
 setup();
-setInterval(draw,33);
+requestAnimationFrame(step);

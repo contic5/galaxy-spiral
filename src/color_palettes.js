@@ -8,5 +8,6 @@ export const color_palettes=[
     [["#ffffff","#4d3b4f","#926663"],"Sand"],
     [["#ffffff","#ecf000","#ec5241"],"Sun"],
     [["#ffffff","#f6d7b0","#e1bf92"],"Sand 2"],
-    [["#888888","#ffffff","#838383"],"Void"],
+    [["#888888","#ffffff","#888888"],"Void"],
+    [["#888888","#211212","#838383"],"Void 2"],
 ]

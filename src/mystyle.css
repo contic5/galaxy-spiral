@@ -14,3 +14,9 @@ body
     display: block;
     margin-bottom: 10px;
 }
+#canvas_holder
+{
+    background-color: black;
+    width:100vw;
+    padding: 15px 0;
+}

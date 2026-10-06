@@ -168,7 +168,7 @@ let angle_change=0.3;
 const start_distance=50;
 
 //Where the last point is
-const end_distance=c.width/2;
+const end_distance=c.height/2;
 
 //Distance between each point in a spiral
 let distance_between=20;
